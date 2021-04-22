@@ -64,5 +64,9 @@ size_t	ft_strlcpy(char *rdst, const char *src, size_t dstsize);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
+t_list	*ft_lstlast(t_list *lst); // без хедера
+void	ft_lstadd_back(t_list **lst, t_list *new); // too
+void	ft_lstdelone(t_list *lst, void (*del)(void*)); // too
+void	ft_lstclear(t_list **lst, void (*del)(void*)); // too
 
 #endif

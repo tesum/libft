@@ -16,11 +16,28 @@ int	ft_lstsize(t_list *lst)
 {
 	size_t	i;
 
+	if (lst == NULL)
+		return (0);
 	i = 0;
 	while (lst->next != NULL)
 	{
-		lst->next = lst->next;
+		lst = lst->next;
 		i++;
 	}
 	return (i);
+}
+
+t_list	*ft_lstnewone(void *content)
+{
+	t_list	*elem;
+
+	elem = (t_list *)malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	if (!content)
+		elem->content = NULL;
+	else
+		elem->content = content;
+	elem->next = NULL;
+	return (elem);
 }

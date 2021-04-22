@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	static	ft_isspace(const char *str)
+static int	ft_isspace(const char *str)
 {
 	int		i;
 
@@ -23,7 +23,7 @@ int	static	ft_isspace(const char *str)
 	return (i);
 }
 
-int	static	ft_result(const char *str, int i)
+static int	ft_result(const char *str, int i)
 {
 	int	result;
 

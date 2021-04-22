@@ -7,14 +7,13 @@ SRCS		=	main.c ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isa
 				ft_itoa.c ft_strtrim.c ft_substr.c ft_strjoin.c ft_putstr_fd.c ft_putnbr_fd.c \
 				ft_putendl_fd.c ft_putchar_fd.c ft_strmapi.c ft_split.c ft_charstr_bonus.c \
 				\
-				ft_lstnew.c ft_lstadd_front.c ft_lstsize.c\
+				ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c \
 
-SRCS_BONUS	= ft_lstnew.c ft_lstadd_front.c
+SRCS_BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c 
 
 OBJ 		= $(patsubst %.c,%.o,$(SRCS))
 OBJ_BONUS	= $(patsubst %.c,%.o,$(SRCS_BONUS))
 
-D_FILES		= $(patsubst %.c,%.o,$(SRCS_BONUS) $(OBJ))
 CC			= gcc
 
 FLAGS		= -Wall -Wextra -Werror
@@ -25,18 +24,22 @@ all:		${NAME}
 
 ${NAME}:	${OBJ}
 			ar rcs $(NAME) $?
+			libft.so
 
 %.o : 		%.c 	
 			${CC} ${FLAGS} -c $< -o $@
 
 bonus:	
-			@make OBJ=$(OBJ_BONUS) all
+			@make OBJ="$(OBJ_BONUS)" all
 clean:
-			${RM} ${OBJ}
+			${RM} ${OBJ} $(OBJ_BONUS)
+
+libft.so :	$(OBJ) $(OBJ_BONUS)
+			$(SRCS) $(SRCS_BONUS) -shared $^ -o $@
 
 fclean:		clean
 			${RM} ${NAME}
 		
 re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

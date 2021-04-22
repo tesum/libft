@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	static	div_malloc(int n)
+static int	div_malloc(int n)
 {
 	int		i;
 
